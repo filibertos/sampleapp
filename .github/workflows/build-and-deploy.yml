@@ -45,11 +45,11 @@ jobs:
         with:
           name: ${{ env.package-name }}
 
-      #- name: Secret information
-      #  run: echo "Value of secret matches: ${{ secrets.AZUR_PUBLISH_PROFILE == 'Placeholder' }}"
+      - name: Secret information
+        run: echo "Value of secret matches: ${{ secrets.AZUR_PUBLISH_PROFILE == 'Placeholder' }}"
 
-      #- name: Name of app service
-        #run: echo "App will be deployed to ${{env.app-name}}"
+      - name: Name of app service
+        run: echo "App will be deployed to ${{env.app-name}}"
 
       #- name: List files in root directory
       #  run: |
