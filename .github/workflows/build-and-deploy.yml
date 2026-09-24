@@ -30,20 +30,20 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}\myapp
 
-  deploy-job:
-    runs-on: windows-latest
-    needs: build-job
-    env:
-      package-name: .net-app
-      app-name: azureapp1
-      deployment-slot: production
+  #deploy-job:
+    #runs-on: windows-latest
+    #needs: build-job
+   # env:
+   #  package-name: .net-app
+    #  app-name: azureapp1
+    #  deployment-slot: production
 
-    steps:
+   #cancel:  steps:
 
-      - name: Download artifact
-        uses: actions/download-artifact@v4.1.8
-        with:
-          name: ${{env.package-name}}
+  #    - name: Download artifact
+    #    uses: actions/download-artifact@v4.1.8
+  #      with:
+     #    name: ${{env.package-name}}
 
       #- name: Secret information
       #  run: echo "Value of secret matches: ${{ secrets.AZUR_PUBLISH_PROFILE == 'Placeholder' }}"
