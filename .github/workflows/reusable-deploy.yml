@@ -9,9 +9,6 @@ on:
       app-name:
         required: true
         type: string
-      #deployment-slot:
-      #  required: true
-      #  type: string
 
 jobs:
 
