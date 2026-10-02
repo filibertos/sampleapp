@@ -13,6 +13,9 @@ jobs:
       - name: Echo trigger
         run: echo "Trigger ${{ github.event }}"
 
+      - name: RUNNER_ENVIRONMENT
+        run: echo "Trigger ${{ env.RUNNER_ENVIRONMENT }}"
+
       - name: Checkout code
         uses: actions/checkout@v7.0.1
 
