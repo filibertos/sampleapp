@@ -1,0 +1,19 @@
+name: Default Environment Variables
+
+on:
+  workflow_dispatch:
+
+jobs:
+  linux-runner-job:
+    runs-on: ubuntu-latest
+    if: ${{ github-ref == 'refs/heads/main' }}
+
+    steps:
+
+      - name: Show envs
+        run: |
+          echo "environment variables are"
+          env
+
+      - name: Show home dir
+        run: echo "home directory is $HOME"
