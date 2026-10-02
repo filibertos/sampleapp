@@ -1,0 +1,24 @@
+name: "greeting"
+description: "greeting"
+
+inputs:
+  gretee:
+    description: "gretee"
+    required: false
+    default: "nobody"
+
+outputs:
+  random-number:
+    description: "random-number"
+    value: ${{ steps.random-number.outputs.random-number }}
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: "gretee"
+      run: echo "Be greeted -> ${{ inputs.gretee }}"
+
+    - name: "random-number"
+      id: random-number
+      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT

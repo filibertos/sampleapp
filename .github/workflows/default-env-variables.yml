@@ -10,6 +10,15 @@ jobs:
 
     steps:
 
+      - name: "Greeting"
+        id: greeting
+        uses: ./.github/actions/greeting
+        with:
+          gretee: "fips"
+
+      - name: "Greeting output"
+        run: echo "Your magic number is ${{ steps.greeting.outputs.random-rumber }}"
+
       - name: "Show envs"
         run: |
           echo "environment variables are"
