@@ -18,7 +18,9 @@ runs:
 
     - name: "gretee"
       run: echo "Be greeted -> ${{ inputs.gretee }}"
+      shell: bash
 
     - name: "random-number"
       id: random-number
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+      shell: bash
