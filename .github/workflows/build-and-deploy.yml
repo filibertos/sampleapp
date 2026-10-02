@@ -10,6 +10,9 @@ jobs:
 
     steps:
 
+      - name: Echo trigger
+        run: echo "Trigger ${{ github.event }}"
+
       - name: Checkout code
         uses: actions/checkout@v7.0.1
 
