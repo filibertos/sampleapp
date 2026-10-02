@@ -18,3 +18,8 @@ jobs:
       - name: "Show home dir"
         run: echo "home directory is $HOME"
   
+      - name: "Set env var"
+        run: echo "VARRE=ich bin ein berliner" >> "$GITGUB_ENV"
+
+      - name: "Get env var"
+        run: echo "Here is VARRE. $VARRE"
