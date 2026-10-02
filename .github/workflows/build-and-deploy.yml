@@ -10,11 +10,11 @@ jobs:
 
     steps:
 
-      - name: Echo trigger
-        run: echo "Trigger ${{ github.event }}"
+      - name: github.event_name
+        run: echo "Trigger ${{ github.event_name }}"
 
-      - name: RUNNER_ENVIRONMENT
-        run: echo "Trigger $RUNNER_ENVIRONMENT"
+      - name: GITHUB_EVENT_NAME
+        run: echo "Trigger $GITHUB_EVENT_NAME"
 
       - name: Checkout code
         uses: actions/checkout@v7.0.1
