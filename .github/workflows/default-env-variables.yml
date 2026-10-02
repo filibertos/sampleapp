@@ -23,3 +23,12 @@ jobs:
 
       - name: "Get env var"
         run: echo "Here is VARRE. $VARRE"
+
+      - name: "Set output"
+        id: set_output
+        run: echo "VARE=123" >> "$GITHUB_OUTPUT"
+
+      - name: "Get output"
+        env:
+          YESS: ${{ steps.set_output.outputs.VARE }}
+        run: echo "Here is YESS. $YESS"
