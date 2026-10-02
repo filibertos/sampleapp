@@ -10,34 +10,37 @@ jobs:
 
     steps:
 
-      - name: "Greeting"
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
+
+      - name: Greeting
         id: greeting
         uses: ./.github/actions/greeting
         with:
           gretee: "fips"
 
-      - name: "Greeting output"
+      - name: Greeting output
         run: echo "Your magic number is ${{ steps.greeting.outputs.random-rumber }}"
 
-      - name: "Show envs"
+      - name: Show envs
         run: |
           echo "environment variables are"
           env
 
-      - name: "Show home dir"
+      - name: Show home dir
         run: echo "home directory is $HOME"
   
-      - name: "Set env var"
+      - name: Set env var
         run: echo "VARRE=ich bin ein berliner" >> "$GITHUB_ENV"
 
-      - name: "Get env var"
+      - name: Get env var
         run: echo "Here is VARRE. $VARRE"
 
-      - name: "Set output"
+      - name: Set output
         id: set_output
         run: echo "VARE=123" >> "$GITHUB_OUTPUT"
 
-      - name: "Get output"
+      - name: Get output
         env:
           YESS: ${{ steps.set_output.outputs.VARE }}
         run: echo "Here is YESS. $YESS"
