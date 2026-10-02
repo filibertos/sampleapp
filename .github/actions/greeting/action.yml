@@ -22,5 +22,5 @@ runs:
 
     - name: "random-number"
       id: random-number
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+      run: echo "random-number=17" >> $GITHUB_OUTPUT
       shell: bash
