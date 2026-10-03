@@ -1,4 +1,4 @@
-name: Build and Deploy .NET App
+name: Build and Deploy
 
 on:
   workflow_dispatch:
@@ -10,13 +10,10 @@ jobs:
 
     steps:
 
-      - name: github.event_name
-        run: echo "Trigger ${{ github.event_name }}"
-
       - name: Checkout code
         uses: actions/checkout@v7.0.1
 
-      - name: Setup .NET core
+      - name: Setup .net
         uses: actions/setup-dotnet@v6.0.0
         with:
           dotnet-version: '8.x'
@@ -25,7 +22,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Publish code
-        run: dotnet publish -c Release --property:PublishDir="${{ env.DOTNET_ROOT }}\myapp"
+        run: dotnet publish -configuration Release --property:PublishDir="${{ env.DOTNET_ROOT }}\myapp"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7.0.1
@@ -38,8 +35,7 @@ jobs:
     needs: build-job
     env:
       package-name: .net-app
-      app-name: azureapp1
-      deployment-slot: production
+      app-name: azureapp
 
     steps:
 
@@ -48,8 +44,11 @@ jobs:
         with:
           name: ${{ env.package-name }}
 
-      - name: Name of app service
-        run: echo "App will be deployed to ${{env.app-name}}"
+      - name: Echo app name
+        run: echo "App will be deployed to ${{ env.app-name }}"
+
+      - name: Echo app secret
+        run: echo "Secret matches to ${{ secrets.AZURE_PUBLISH_PROFILE == 'Placeholder' }}"
 
       - name: List files in root directory
         run: |
