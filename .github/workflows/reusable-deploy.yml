@@ -1,4 +1,4 @@
-name: Reusable Deploy .NET App
+name: Reusable Deploy
 
 on:
   workflow_call:
@@ -9,10 +9,13 @@ on:
       app-name:
         required: true
         type: string
+    secrets:
+      azure-publish-profile:
+        required: false
 
 jobs:
 
-  reusable-deploy-job:
+  deploy-job:
     runs-on: windows-latest
 
     steps:
@@ -22,8 +25,11 @@ jobs:
         with:
           name: ${{ inputs.package-name }}
 
-      - name: Name of app service
+      - name: Echo app name
         run: echo "App will be deployed to ${{ inputs.app-name }}"
+
+      - name: Echo app secret
+        run: echo "Secret matches to ${{ secrets.azure-publish-profile == 'Placeholder' }}"
 
       - name: List files in root directory
         run: |
